@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="demo">
+            {{msg}}
+            <aaa></aaa>
+            <hq></hq>
+        </div>
+    </body>
+    <script src='vue.js'></script>
+    <script>
+    	var aaa=Vue.extend({
+    		template:"<h3>hhhh</h3>"
+    	})
+    	Vue.component("aaa",aaa)
+    	// console.log(a);
+    	console.log(aaa);
+    	Vue.component("hq",{
+    		template:"<h2 v-text='name' @click='change'>123</h2>",
+    		data:function(){
+    			return {name:"hq",age:12}
+    		},
+    		methods:{
+    			change(){
+    				this.name="xf"
+    			}
+    		}
+    	})
+        window.onload=function(){
+            var vm=new Vue({
+                el:"#demo",
+                data:{
+                    msg:"hq"
+                }
+            })
+        }
+    </script>
+</html>

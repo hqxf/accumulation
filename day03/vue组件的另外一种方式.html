@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="demo">
+        	<my-aaa></my-aaa>
+        	<aaa></aaa>
+        </div>
+    </body>
+    <script src='vue.js'></script>
+    <script>
+        window.onload=function(){
+        	Vue.component("my-aaa",{
+        		template:"<strong>afaf</strong>"
+        	})
+            var vm=new Vue({
+                el:"#demo",
+                data:{
+                    msg:"hq"
+                },
+                components:{
+                	"aaa":{
+                		template:"<h1>1212</h1>"
+                	}
+                }
+            })
+        }
+    </script>
+</html>

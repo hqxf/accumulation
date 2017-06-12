@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="animate.css">
+        <style>
+        	#demo{
+        		width: 400px;
+        		margin: 0px auto;
+        	}
+			#div1{
+				width: 100px;
+				height: 100px;
+				background: #f00;
+			}
+        </style>
+    </head>
+    <body>
+        <div id="demo">
+            <input type="button" value="按钮" @click="toggle">
+            <div id="div1" v-if="bSign" transition="fade" class="animated"></div>
+        </div>
+    </body>
+    <script src="vue.js"></script>
+    <script>
+        window.onload=function(){
+            var vm=new Vue({
+                el:"#demo",
+                data:{
+                    msg:"hq",
+                    bSign:true
+                },
+                methods:{
+                	toggle(){
+                		this.bSign=!this.bSign;
+                	}
+                },
+                transitions:{
+                	fade:{
+                		enterClass:"zoomInLeft",
+                		leaveClass:"zoomOutRight"
+                	}
+                }
+            })
+        }
+    </script>
+</html>

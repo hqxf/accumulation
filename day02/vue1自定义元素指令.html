@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="demo">
+        	<input type="text" v-model="a">
+        	<p v-color="a">123</p>
+        	<my-hq>123</my-hq>0000000
+        </div>
+    </body>
+    <script src="vue.js"></script>
+    <script>
+        window.onload=function(){
+        	Vue.elementDirective("my-hq",{
+        		bind:function(){
+        			this.el.style.backgroundColor="red"
+        		}
+        	})
+        	Vue.directive("color",function(a){
+        		this.el.style.backgroundColor=a;
+        	})
+            var vm=new Vue({
+                el:"#demo",
+                data:{
+                    msg:"hq",
+                    a:"red"
+                }
+            })
+        }
+    </script>
+</html>

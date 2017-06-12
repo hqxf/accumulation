@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="demo">
+            <input type="text" v-model="msg" @keyup.ctrl="show($event)">
+        	{{a}} <br>{{b}} <br>{{hh | json}}
+        </div>
+    </body>
+    <script src="vue.js"></script>
+    <script>
+    	Vue.directive("on").keyCodes.ctrl=17;
+        window.onload=function(){
+            var vm=new Vue({
+                el:"#demo",
+                data:{
+                    msg:"hq",
+                    a:1,
+                    b:2,
+                    hh:{name:"hq",age:18}
+                },
+                methods:{
+                	show:function(a){
+                		alert(a.keyCode)
+                	}
+                }
+            })
+            document.onclick=function(){
+            	vm.a=11;
+            	vm.hh.name="asdfsadf";
+            }
+            vm.$watch("a",function(){
+            	alert(this.a)
+            });  //浅度监视 
+            vm.$watch("hh",function(){
+            	alert(this.hh.age)
+            },{deep:true}) //深度监视  回调函数后面加一个参数 {deep:true}
+        }
+    </script>
+</html>

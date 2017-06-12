@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="demo">
+            {{msg}}
+            <br>
+            <span v-red>aaaaa</span>
+            <p v-red>bbbbb</p>
+            <p v-red>bbbbb</p>
+            <p v-red>bbbbb</p>
+            <p v-red>bbbbb</p>
+        </div>
+    </body>
+    <script src='vue.js'></script>
+    <script>
+        window.onload=function(){
+        	Vue.directive("red",function(){
+        		this.el.style.backgroundColor="red";
+        	})
+            var vm=new Vue({
+                el:"#demo",
+                data:{
+                    msg:"hq"
+                }
+            })
+        }
+    </script>
+</html>

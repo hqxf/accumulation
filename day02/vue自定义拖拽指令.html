@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="demo">
+            <div v-drag class="box1" :style="{width:'200px',height:'200px',background:'#abcdef',position:'absolute',right:0,top:0,cursor:'move'}"></div>
+        </div>
+    </body>
+    <script src='vue.js'></script>
+    <script>
+        window.onload=function(){
+        	Vue.directive("drag",function(){
+        		var oDiv=this.el;
+        		oDiv.onmousedown=function(e){
+        			var e=e||window.event;
+        			var tar=e.target||window.srcElement;
+        			var disX=e.clientX-oDiv.offsetLeft;
+        			var disY=e.clientY-oDiv.offsetTop;
+        			document.onmousemove=function(){
+        				var e=e||window.event;
+        				var tar=e.target||window.srcElement;
+        				var l=e.clientX-disX;
+        				var t=e.clientY-disY;
+        				oDiv.style.left=l+"px";
+        				oDiv.style.top=t+"px";
+        			}
+	        		document.onmouseup=function(){
+	        			document.onmousemove=null;
+	        			document.onmouseup=null;
+	        		}
+        		}
+        	})
+            var vm=new Vue({
+                el:"#demo",
+                data:{
+                    msg:"hq"
+                }
+            })
+        }
+    </script>
+</html>

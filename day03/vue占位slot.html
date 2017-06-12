@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="demo">
+        	<aaa>
+        		<!-- 下面内容原本不显现 -->
+        		<ul slot="abc">
+        			<li>0001</li>
+        			<li>0002</li>
+        			<li>0003</li>
+        			<li>0004</li>
+        			<li>0005</li>
+        			<li>0006</li>
+        		</ul>
+        		<ol slot="hgh">
+        			<li>1</li>
+        			<li>2</li>
+        			<li>3</li>
+        			<li>4</li>
+        			<li>5</li>
+        			<li>6</li>
+        		</ol>
+        	</aaa>
+        </div>
+        <template id="aaa">
+        	<h1>aaaa</h1>
+        	<!-- 占位符  可以是实现 出现ul内容 -->
+        	<slot name="abc"></slot>
+        	<p>ppppp</p>
+        	<slot name="hgh"></slot>
+        </template>
+    </body>
+    <script src='vue.js'></script>
+    <script>
+        window.onload=function(){
+            var vm=new Vue({
+                el:"#demo",
+                data:{
+                    msg:"hq"
+                },
+                components:{
+                	"aaa":{
+                		template:"#aaa"
+                	}
+                }
+            })
+        }
+    </script>
+</html>

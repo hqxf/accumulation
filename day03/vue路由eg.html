@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="demo">
+                <ul>
+                    <li><a v-link="{path:'/home'}">主页</a></li>
+                    <li><a v-link="{path:'/news'}">新闻</a></li>
+                </ul>
+                <div>
+            	<router-view></router-view>
+                </div>
+        </div>
+    </body>
+    <script src="vue.js"></script>
+    <script src="vue-router.js"></script>
+    <script>
+        	var app=Vue.extend();
+        	var Home=Vue.extend({
+        		template:"<h1>我是主页</h1>"
+        	})
+        	var News=Vue.extend({
+        		template:"<h1>我是新闻</h1>"
+        	})
+        	var routers=new VueRouter();
+        	routers.map({
+        		'home':{
+        			component:Home
+        		},
+        		'news':{
+        			component:News
+        		}
+        	})
+        	routers.redirect({
+        		'/':"home"
+        	})
+        	routers.start(app,"#demo");
+
+            //后面带vm会报错？？？   为什么？
+
+            /*var vm=new Vue({
+                el:"#demo",
+                data:{
+                    msg:"hq"
+                }
+            })*/
+   
+    </script>
+</html>

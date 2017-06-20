@@ -31,6 +31,16 @@
         </template>
         <template id="news">
         	<h3>我是新闻</h3>
+            <ul>
+                <li><a href="" v-link="{path:'/news/detail/001'}">新闻001</a></li>
+                <li><a href="" v-link="{path:'/news/detail/002'}">新闻002</a></li>
+            </ul>
+            <div>
+                <router-view></router-view>
+            </div>
+        </template>
+        <template id="detail">
+            {{$route.params | json }}
         </template>
     </body>
     <script src="vue.js"></script>
@@ -62,7 +72,14 @@
             		}
             	},
             	'news':{
-            		component:News
+            		component:News,
+                    subRoutes:{
+                        "/detail/:id":{
+                            component:{
+                                template:"#detail"
+                            }
+                        }
+                    }
             	}
             })
             router.start(App,"#demo");

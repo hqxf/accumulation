@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="demo">
+            {{msg}}
+            <input type="text" v-model="myData">
+            <input type="button" value="添加" @click="add">
+            <p v-for='(val,i) in b' v-text='val'></p>
+        </div>
+    </body>
+    <script src='vue2.0.js'></script>
+    <script>
+        window.onload=function(){
+            var vm=new Vue({
+                el:"#demo",
+                data:{
+                    msg:"hq",
+                    myData:"",
+                    list:[1,2,3,4,5,6]
+                },
+                methods:{
+                	add(){
+                		this.list.push(this.myData);
+                		this.myData='';
+                	}
+                },
+                computed:{
+                	b(){
+                		return this.list.filter(function(v,i){
+                			return v>4;
+                		})
+                	}
+                }
+            })
+        }
+    </script>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="demo">
+            {{msg}}
+            <input type="button" v-model="hh" @click="update">
+            <input type="button" value="组件销毁" @click='des'>
+        </div>
+    </body>
+    <script src='vue2.0.js'></script>
+    <script>
+        window.onload=function(){
+            var vm=new Vue({
+                el:"#demo",
+                data:{
+                    msg:"hq",
+                    hh:"dd"
+                },
+                beforeUpdate(){
+                	//this.hh='pp'
+                	console.log("组件更新之前");
+                },
+                updated(){
+                	this.hh='ppppp'
+                	console.log('组件更新之后');
+                },
+                methods:{
+                	update(){
+                		this.msg="dsafadsfasdf"
+                	},
+                	des(){
+                		this.$destroy()
+                	}
+                },
+                beforeDestroy(){
+                	console.log("组件销毁之前");
+                },
+                destroyed(){
+                	this.msg='1212sadfsaf'
+                	console.log("组件销毁之后");
+                }
+            })
+        }
+    </script>
+</html>

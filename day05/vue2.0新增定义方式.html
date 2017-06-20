@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="demo">
+            {{msg}}
+            <aaa></aaa>
+            <bbb></bbb>
+        </div>
+        <h3>sadfsafasf</h3>
+        <aaa></aaa>
+        <template id="dddd">
+        	<h4>{{hq}}</h4>
+        </template>
+    </body>
+    <script src='vue2.0.js'></script>
+    <script>
+    	var Home = {
+    		data(){
+    			return {hq:"hq"}
+    		},
+    		template:"#dddd"
+    	}
+    	Vue.component("aaa",Home)
+        window.onload=function(){
+            var vm=new Vue({
+                el:"#demo",
+                data:{
+                    msg:"hq"
+                },
+                components:{
+                	'bbb':Home
+                }
+            })
+        }
+    </script>
+</html>

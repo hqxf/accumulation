@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="demo">
+            {{msg}}
+            <!-- sync 同步子组件更改数据，父组件数据才能被更改 -->
+        	<my-child :m.sync='msg'></my-child>
+        </div>
+        <template id="child">
+        	<div>
+        		<h1>我是子组件</h1>
+	        	<p v-text='m'></p>
+	        	<input type="button" value="按钮" v-on:click='change'>
+	        	<p v-text='info'></p>
+        	</div>
+        </template>
+    </body>
+    <script src="vue1.0.js"></script>
+    <script>
+        window.onload=function(){
+            var vm=new Vue({
+                el:"#demo",
+                data:{
+                    msg:"hq"
+                },
+                components:{
+                	"my-child":{
+                		template:"#child",
+	                	props:['m'],
+	                	methods:{
+	                		change(){
+	                			this.m="sssss"
+	                		}
+	                	},
+	                	data(){
+	                		return {info:"asfdasf"}
+	                	}
+                	},
+                }
+            })
+        }
+    </script>
+</html>

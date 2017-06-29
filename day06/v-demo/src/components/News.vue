@@ -4,7 +4,7 @@
         <input type="button" @click="add" value="添加">
         <input type="text" v-model='msg'>
         <ul>
-            <li v-for="(val,i) in list" v-if='show'>{{val|hq}}</li>
+            <li v-for="(val,i) in b" v-if='show'>{{val}}</li>
         </ul>
     </div>
 </template>
@@ -16,7 +16,7 @@
     export default{
         name:"news",
         data(){
-            return {list:[1,2,3,4,5,6],msg:'',show:false}
+            return {list:[1,2,3,4,5,6],msg:'',show:true}
         },
         computed:{
             b(){

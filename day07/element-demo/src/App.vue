@@ -1,21 +1,14 @@
 <template>
   <div id="app">
-    <div>
-      <ul>
-        <li>
-          <router-link to="/home">主页</router-link>
-        </li>
-        <li>
-          <router-link to="/news">新闻</router-link>
-        </li>
-      </ul>
-      <div>
-        <transition enter-active-class="animated zoomInLeft" leave-active-class="animated zoomOutRight">
-        <router-view></router-view>
-      </transition>
-
-      </div>
-    </div>
+    <el-button type="primary">主要按钮</el-button>
+    <el-button type="danger" icon="close">主要按钮</el-button>
+    <el-button type="info" icon="search">主要按钮</el-button>
+    <span class="el-icon-delete"></span>
+    <span class="el-icon-loading"></span>
+    <el-row>
+    <el-col :span="16">1212</el-col>
+    <el-col :span="8">3</el-col>
+    </el-row>
   </div>
 </template>
 
@@ -30,7 +23,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped lang="less">
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

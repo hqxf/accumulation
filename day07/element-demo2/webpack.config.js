@@ -25,10 +25,6 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.css$/,
-        loader: ["vue-style-loader", "css-loader"]  //顺序写死的
-      },
-      {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {

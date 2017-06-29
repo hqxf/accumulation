@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="animate.css">
+    </head>
+    <body>
+        <div id="demo">
+	        <div>
+	        	<router-link to="/home">主页</router-link>
+		        <router-link to="/user">用户</router-link>
+	        </div>
+	        <div>
+	        	<transition enter-acive-class="animated bounceInLeft" leave-active-class="animated bounceOutRight">
+        				<router-view></router-view>
+        			</transition>
+	        </div>
+        </div>
+        <template id="user">
+        	<div>
+        		<h2>用户信息</h2>
+        		<ul>
+        			<li>
+        				<router-link to="/user/a/age/10">a</router-link>
+        			</li>
+        			<li>
+        				<router-link to='/user/b/age/20'>b</router-link>
+        			</li>
+        			<li>
+        				<router-link to='/user/c/age/30'>c</router-link>
+        			</li>
+        		</ul>
+        		<div>
+        			<router-view></router-view>
+
+        		</div>
+        	</div>
+        </template>
+    </body>
+    <script src='vue2.0.js'></script>
+    <script src="vue-router.js"></script>
+    <script>
+    	var Home = {
+    		template:"<h1>我是主页</h1>"
+    	}
+    	var User = {
+    		template:"#user"
+    	}
+    	var DDD = {
+    		template:"<h3>{{$route.params}}</h3>"
+    	}
+    	var routes = [
+    		{path:"/home",component:Home},
+    		{path:"/user",component:User,children:[
+    			{path:":username/age/:id",component:DDD}
+    		]},
+    		{path:"*",redirect:"/home"}
+    	]
+    	var router = new VueRouter({
+    		routes
+    	})
+        window.onload=function(){
+            var vm=new Vue({
+                el:"#demo",
+                data:{
+                    msg:"hq"
+                },
+                router
+            })
+        }
+    </script>
+</html>

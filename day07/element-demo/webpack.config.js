@@ -26,7 +26,11 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: ["vue-style-loader", "css-loader"]  //顺序写死的
+        loader: ["vue-style-loader", "css-loader"]  //先style后css
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        loader: 'file-loader'
       },
       {
         test: /\.(png|jpg|gif|svg)$/,

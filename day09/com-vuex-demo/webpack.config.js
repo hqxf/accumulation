@@ -23,9 +23,6 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: /node_modules/
-      },{
-        test: /\.less$/,
-        loader: 'style!css!less'
       },
       {
         test: /\.(png|jpg|gif|svg)$/,

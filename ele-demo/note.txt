@@ -1,0 +1,82 @@
+webpack分析
+
+外卖App上家页面-准备工作
+	需求分析
+
+目录结构
+	src
+		common
+			js
+				.js
+			css
+				.css
+			fonts
+				字体图标
+		components
+			header
+				.vue
+
+后台模拟数据
+	mock数据
+
+	在dev-server.js中写入代码
+
+	var appData = require('../data.json');
+	var seller = appData.seller;
+	var goods = appData.goods;
+	var ratings = appData.rantings;
+	var apiRoutes = express.Router();
+	apiRoutes.get("/seller",function(req,res){
+		res.json({
+			errno:0,
+			data:seller
+		})
+	})
+	apiRoutes.get("/goods",function(req,res){
+		res.json({
+			errno:0,
+			data:goods
+		})
+	})
+	apiRoutes.get("/ratings",function(req,res){
+		res.json({
+			errno:0,
+			data:ratings
+		})
+	})
+	app.use('./api',apiRoutes);
+
+
+	//post请求修改配置文件
+	apiRoutes.post('/seller',function(req,res){
+	    res.send({
+	        appData
+		});
+	});
+
+
+eslintrc.js
+	'semi':['error','always'] //分号报错 import 后面要加分号
+	'index': 0;  //缩进
+
+webpack-base.config.js 配置去掉相对路径的  eg "vue"
+
+npm install 
+	i --> install
+	-S --> --save
+	-D --> --save-dev
+
+父元素display:flex
+	子元素flex:1
+vue-loader
+	下面的postcss插件
+
+
+css 书写规范
+	1.影响布局
+	2.不能继承的，宽高等
+	3.能被继承，
+
+草料二维码
+
+移动端1px问题

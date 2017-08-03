@@ -1,0 +1,19 @@
+ls            //查看所有文件
+cd filename   //进入文件夹
+cd ..         //返回上一层
+ctrl+c        //退出
+
+
+新建文件夹
+	md c:\hello
+	md c:\hello\xf
+
+删除
+	rd 删除子目录命令--子目录必须为空
+	del 清空制定文件夹下的文件
+
+git bash vim
+
+	ESC 
+	:q  //退出不保存
+	:wq //退出并保存

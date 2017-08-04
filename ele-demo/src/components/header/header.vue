@@ -31,7 +31,12 @@
     </div>
     <div class="detail" v-show="detailShow">
       <div class="detail-wrapper clearfix">
-        <div class="detail-main"></div>
+        <div class="detail-main">
+          <h1 class="name">{{seller.name}}</h1>
+          <div class="star-wrapper">
+            <star :size="48" :score="seller.score"></star>
+          </div>
+        </div>
       </div>
       <div class="detail-close">
         <i class="icon-close"></i>
@@ -40,6 +45,7 @@
   </div>
 </template>
 <script>
+  import star from './../star/star.vue'
   export default{
     props:{
       seller:{
@@ -56,6 +62,9 @@
     },
     mounted(){
       this.classMap = ['decrease','discount','special','invoice','guarantee']
+    },
+    components:{
+      star
     }
   }
 </script>
@@ -212,6 +221,17 @@
         .detail-main{
           margin-top: 64px;
           padding-bottom: 64px;
+          .name{
+            line-height: 16px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 700;
+          }
+          .star-wrapper{
+            margin-top: 18px;
+            padding: 2px 0;
+            text-align: center;
+          }
         }
       }
       .detail-close{

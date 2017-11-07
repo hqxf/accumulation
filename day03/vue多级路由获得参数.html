@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style>
+			.v-link-active{
+				font-size: 24px;
+				color: skyblue;
+			}
+        </style>
+    </head>
+    <body>
+        <div id="demo">
+            <ul>
+            	<li><a v-link="{path:'/home'}">home</a></li>
+            	<li><a v-link="{path:'/news'}">news</a></li>
+            </ul>
+            <div>
+            	<router-view></router-view>
+            </div>
+        </div>
+        <template id="home">
+        	<h3>我是主页</h3>
+        	<div>
+        		<a v-link="{path:'/home/login'}">登录</a>
+        		<a v-link="{path:'/home/leg'}">注册</a>	
+        	</div>
+        	<div>
+        		<router-view></router-view>
+        	</div>
+        </template>
+        <template id="news">
+        	<h3>我是新闻</h3>
+            <ul>
+                <li><a href="" v-link="{path:'/news/detail/001'}">新闻001</a></li>
+                <li><a href="" v-link="{path:'/news/detail/002'}">新闻002</a></li>
+            </ul>
+            <div>
+                <router-view></router-view>
+            </div>
+        </template>
+        <template id="detail">
+            {{$route.params | json }}
+        </template>
+    </body>
+    <script src="vue.js"></script>
+    <script src="vue-router.js"></script>
+    <script>
+        window.onload=function(){
+            var App=Vue.extend();
+            var Home=Vue.extend({
+            	template:"#home"
+            })
+            var News=Vue.extend({
+            	template:"#news"
+            })
+            var router=new VueRouter();
+            router.map({
+            	'home':{
+            		component:Home,
+            		subRoutes:{
+            			'login':{
+            				component:{
+            					template:"<strong>我是登录信息</strong>"
+            				}
+            			},
+            			'leg':{
+            				component:{
+            					template:"<strong>我是注册信息</strong>"
+            				}
+            			}
+            		}
+            	},
+            	'news':{
+            		component:News,
+                    subRoutes:{
+                        "/detail/:id":{
+                            component:{
+                                template:"#detail"
+                            }
+                        }
+                    }
+            	}
+            })
+            router.start(App,"#demo");
+            router.redirect({
+            	'/':'/home'
+            })
+        }
+    </script>
+</html>

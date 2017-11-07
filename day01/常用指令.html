@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    	<div id="demo">
+    		<input type="text" v-model="msg">
+    		{{msg}}
+    		<p v-for="item in list">{{item.name}}--{{item.age}}--{{$index}}</p>
+    	</div>
+    </body>
+    <script src="../vue.js"></script>
+    <script>
+	    var vm=new Vue({
+	    	el:"#demo",   //选择器
+	    	data:{
+	    		msg:"hq",  //model 
+	    		list:[
+	    			{name:"hq",age:12},
+	    			{name:"xf",age:15},
+	    			{name:"qk",age:166}
+	    		]
+	    	}
+	    })
+    </script>
+</html>

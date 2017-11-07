@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="demo">
+        	<com-a></com-a>
+        	<com-b></com-b>
+        	<com-c></com-c>
+        </div>
+    </body>
+    <script src="vue2.0.js"></script>
+    <script>
+    	var Event=new Vue();
+    	var A={
+    		template:`
+	    		<div>
+		    		<span>我是A组件</span>->{{a}}
+		    		<input type='button' value='把A数据给C' @click='send'/>
+	    		</div>
+    		`,
+    		data(){
+    			return {a:"我是a数据"}
+    		},
+    		methods:{
+    			send(){
+    				Event.$emit("my-msg",this.a);
+    			}
+    		}
+    	};
+    	var B={
+    		template:`
+	    		<div>
+		    		<span>我是B组件</span>->{{b}}
+		    		<input type='button' value='把B数据给C' @click='send'/>
+	    		</div>
+    		`,
+    		data(){
+    			return {b:"我是B数据"}
+    		},
+    		methods:{
+    			send(){
+    				Event.$emit('my-msga',this.b)
+    			}
+    		}
+    	};
+    	var C={
+    		template:`
+	    		<div>
+		    		<span>我是C组件</span>
+		    		<p>接收到来自a组件的数据:{{a}}</p>
+		    		<p>接收到来自b组件的数据:{{b}}</p>
+	    		</div>
+    		`,
+    		data(){
+    			return {a:"",b:""}
+    		},
+    		mounted(){
+    			//注意 this指向发生变化  用bind绑定this到函数上
+    			//保存this变量  var _this=this;
+    			var _this=this;
+    			Event.$on('my-msg',function(a){
+    				this.a=a;
+    			}.bind(this));
+    			Event.$on('my-msga',function(a){
+    				_this.b=a;
+    			})
+    		}
+    	}
+        window.onload=function(){
+            var vm=new Vue({
+                el:"#demo",
+                data:{
+                    msg:"hq"
+                },
+                components:{
+                	'com-a':A,
+                	'com-b':B,
+                	'com-c':C
+                }
+            })
+        }
+    </script>
+</html>

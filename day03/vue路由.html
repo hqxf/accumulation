@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="demo">
+            <ul>
+            	<li><a v-link="{path:'/home'}">主页</a></li>
+            	<li><a v-link="{path:'/news'}">新闻</a></li>
+            </ul>
+            <div>
+            	<router-view></router-view>
+            </div>
+        </div>
+    </body>
+    <script src='vue.js'></script>
+    <script src="vue-router.js"></script>
+    <script>
+        window.onload=function(){
+        	//1.准备一个根组件
+        	var App=Vue.extend();
+        	//2.准备主页、新闻组件
+        	var Home=Vue.extend({
+        		template:"<h1>我是主页</h1>"
+        	})
+        	var News=Vue.extend({
+        		template:"<h1>我是新闻</h1>"
+        	})
+        	//3.准备路由
+        	var Router=new VueRouter();
+        	//4.关联
+        	Router.map({
+        		"home":{
+        			component:Home
+        		},
+        		"news":{
+        			component:News
+        		}
+        	})
+        	//5.启动
+        	Router.start(App,"#demo");
+        	//6.重定向   类似301
+        	Router.redirect({
+        		'/':'/home'
+        	})
+            var vm=new Vue({
+                el:"#demo",
+                data:{
+                    msg:"hq"
+                }
+            })
+        }
+    </script>
+</html>

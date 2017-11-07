@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="demo">
+            {{msg}}
+            <input type="button" value="添加">
+            <p v-for="item in list" v-html='item'></p>
+        </div>
+    </body>
+    <script src='vue2.0.js'></script>
+    <script>
+        window.onload=function(){
+            var vm=new Vue({
+                el:"#demo",
+                data:{
+                    msg:"hq",
+                    list:[1,2,3,4,5,5,4]
+                }
+            })
+        }
+    </script>
+</html>

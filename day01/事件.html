@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    	<div id="demo">
+    		<input type="text" v-model="name" placeholder="姓名">
+    		<input type="text" v-model="age" placeholder="年龄">
+    		<input type="button" value="添加成员" @click="add">
+    		<ul v-for="item in list">
+    			<li>{{item.name}}</li>
+    			<li>{{item.age}}</li>
+    		</ul>
+    	</div>
+    </body>
+    <script src="../vue.js"></script>
+    <script>
+	    var vm=new Vue({
+	    	el:"#demo",
+	    	data:{
+	    		list:[
+	    			{name:"hq",age:18}
+	    		],
+	    		name:"",
+	    		age:""
+	    	},
+	    	methods:{
+	    		add:function(){
+	    			console.log(1);
+	    			this.list.push({name:this.name,age:this.age});
+	    		}
+	    	}
+	    })
+    </script>
+</html>

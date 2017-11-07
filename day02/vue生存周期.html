@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    	<div id="demo">
+    		{{msg}}
+    	</div>
+    </body>
+    <script src="vue.js"></script>
+    <script>
+	    window.onload=function(){
+	    	var vm=new Vue({
+	    		el:"#demo",
+	    		data:{
+	    			msg:"hq"
+	    		},
+	    		created:function(){
+	    			alert("已经创建完成")
+	    		},
+	    		beforeCompile:function(){
+	    			alert("编译之前")
+	    		},
+	    		compiled:function(){
+	    			alert("编译之后")
+	    		},
+	    		ready:function(){
+	    			alert("超入到文档中")
+	    		},
+	    		beforeDestroy:function(){
+	    			alert("销毁之前")
+	    		},
+	    		destroy:function(){
+	    			alert("销毁之后")
+	    		}
+	    	});
+	    	document.onclick=function(){
+	    		vm.$destroy();
+	    	}
+	    }
+    </script>
+</html>

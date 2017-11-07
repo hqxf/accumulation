@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="demo">
+        	<aaa></aaa>
+        </div>
+        <template id="aaa">
+        	<span>父组件</span>
+        	<input type="button" value="按钮">
+        	<p>{{msg}}</p>
+        	<!-- 子组件传递数据 -->
+        	<bbb :m="msg" :m1="msg1" @child-msg="get"></bbb>
+        </template>
+        <template id="bbb">
+        	<h2 @click="send">子组件->{{a}}...{{m1}}</h2>
+        	<input type="button" value="send" @click="send">
+        </template>
+    </body>
+    <script src='vue.js'></script>
+    <script>
+        window.onload=function(){
+            var vm=new Vue({
+                el:"#demo",
+                data:{
+                    msg:"hq"
+                },
+                components:{
+                	"aaa":{
+                		template:"#aaa",
+                		data(){
+                			return {msg:"我是父组件的数据",msg1:"测试"}
+                		},
+                		methods:{
+                			get(msg){
+                				//父组件接受数据
+                				this.msg=msg
+                			}
+                		},
+                		components:{
+                			"bbb":{
+                				props:["m",'m1'],
+                				template:"#bbb",
+                				data(){
+                					return {a:"我是子组件数据"}
+                				},
+                				methods:{
+                					send(){
+                						//子组件发送数据
+                						this.$emit("child-msg",this.a)
+                					}
+                				}
+                			}
+                		}
+                	}
+                }
+            })
+        }
+    </script>
+</html>

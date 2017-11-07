@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="demo">
+	        <div>
+		        <router-link to="/home">主页</router-link>
+		        <router-link to="/uers">用户</router-link>
+	        </div>
+	        <div>
+	        	<router-view></router-view>
+	        </div>
+        </div>
+    </body>
+    <script src='vue2.0.js'></script>
+    <script src="vue-router.js"></script>
+    <script>
+    	var Home = {
+    		template:"<h1>我是主页</h1>"
+    	}
+    	var Uers = {
+    		template:`
+	    		<div>
+		    		<h1>我是用户信息</h1>
+		    		<ul>
+		    			<li>
+		    				<router-link to="/uers/a/age/10">a</router-link>
+		    			</li>
+		    			<li>
+		    				<router-link to="/uers/b/age/20">b</router-link>
+		    			</li>
+		    			<li>
+		    				<router-link to="/uers/c/age/30">c</router-link>
+		    			</li>
+		    		</ul>
+		    		<div>
+		    			<router-view></router-view>
+		    		</div>
+	    		</div>
+    		`
+    	}
+    	var DDD = {
+    		template:"<h1>{{$route.params}}</h1>"
+    	}
+    	var routes = [
+    		{path:"/home",component:Home},
+    		{path:"/uers",component:Uers,children:[
+    			{path:":username/age/:age",component:DDD}
+    		]},
+    		{path:"*",redirect:"/home"}
+    	]
+    	var router = new VueRouter({
+    		routes:routes
+    	})
+    	console.log(routes);
+        window.onload=function(){
+            var vm=new Vue({
+                el:"#demo",
+                data:{
+                    msg:"hq"
+                },
+                router
+            })
+        }
+    </script>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="demo">
+            <input type="button" value="aaa组件" @click="a='aaa'">
+            <input type="button" value="bbb组件" @click="a='bbb'4">
+            <component :is="a"></component>
+        </div>
+    </body>
+    <script src='vue.js'></script>
+    <script>
+        window.onload=function(){
+            var vm=new Vue({
+                el:"#demo",
+                data:{
+                    msg:"hq",
+                    a:"aaa"
+                },
+                components:{
+                	"aaa":{
+                		template:"<h1>我是aaa组件</h1>"
+                	},
+                	"bbb":{
+                		template:"<h1>我是bbb组件</h1>"
+                	}
+                }
+            })
+        }
+    </script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    	<div id="demo">
+    		{{msg | format}}
+    		{{html | filterHtml}}
+    	</div>
+    </body>
+    <script src="vue.js"></script>
+    <script>
+	    window.onload=function(){
+	    	Vue.filter("format",function(input){
+	    		var input=new Date(input);
+	    		var year=input.getFullYear();
+	    		var month=input.getMonth()+1;
+	    		var day=input.getDate();
+	    		var hours=input.getHours();
+	    		var minutes=input.getMinutes();
+	    		var seconds=input.getSeconds();
+	    		function addZero(t){
+	    			return t>9?""+t:"0"+t;
+	    		}
+	    		return year+"-"+addZero(month)+"-"+addZero(day)+" "+addZero(hours)+":"+addZero(minutes)+":"+addZero(seconds);
+	    	})
+	    	Vue.filter("filterHtml",function(input){
+	    		return input.replace(/<[^<]+>/g,"");
+	    	})
+	    	var vm=new Vue({
+	    		el:"#demo",
+	    		data:{
+	    			msg:new Date(),
+	    			html:'<strong>aaaaa</strong>'
+	    		}
+	    	});
+	    	console.log(vm);
+	    }
+    </script>
+</html>

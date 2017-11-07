@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    	<div id="demo">
+    		<aaa></aaa>
+    	</div>
+    	<template id="fater">
+    		<h1>我是父组件</h1>
+    		<bbb :m="fa" @my-child="get"></bbb>
+    		<p>{{ff}}</p>
+    	</template>
+    	<template id="son">
+    		<h1>我是子组件</h1>
+    		<input type="button" @click="show(msg)" value="得到父组件数据">
+    		<p v-if="msg" v-text="m"></p>
+    		<input type="button" value="发送数据" @click="send">
+    	</template> 
+    </body>
+    <script src="vue.js"></script>
+    <script>
+	    window.onload=function(){
+	    	var vm=new Vue({
+	    		el:"#demo",
+	    		data:{
+	    			msg:"hq"
+	    		},
+	    		components:{
+	    			"aaa":{
+	    				template:"#fater",
+	    				data(){
+	    					return {fa:"fater",ff:"ff"}
+	    				},
+	    				methods:{
+	    					get(a){
+	    						console.log(a);
+	    						this.ff=a
+	    					}
+	    				},
+	    				components:{
+	    					"bbb":{
+	    						props:["m"],
+		    					template:"#son",
+		    					data(){
+		    						return {son:"son",msg:false}
+		    					},
+		    					methods:{
+		    						show(a){
+		    							this.msg=!a;
+		    						},
+		    						send(){
+		    							this.$emit("my-child",this.son)
+		    						}
+		    					}
+	    					}
+	    				}
+	    			}
+	    		}
+	    	})
+	    }
+    </script>
+</html>

@@ -1,0 +1,70 @@
+vue 高仿饿了么
+	第三方js库better-scroll
+	最大程度组件化
+	h5的localstorage
+	字体图标
+	移动端1像素边框
+	css sticky footer
+	flex弹性布局
+
+学习目标
+	掌握vue.js在实战中的运用
+	学会使用vue.js完整地开发移动端app
+	学会组件化、模块化的开发方式
+
+学习内容
+	vue.js框架介绍
+	vue-cli脚手架  搭建基本代码框架
+	vue-router  官方插件路由
+	vue-resource/axios	ajax通信
+	webpack  构建工具
+	es6 + eslint	eslint:es6代码风格检查工具
+	工程化
+	组件化
+	模块化
+	移动端常用开发技巧
+	flex弹性布局
+	css stickyfooter
+	酷炫的交互设计
+
+近年来前端开发趋势
+	旧浏览器逐渐淘汰,移动端需求增加  es5特性支持
+	前端交互越来越多,功能越来越复杂
+	架构从传统后台mvc向rest api + 前端 mv* 迁移
+		mv* mvc
+			mvp
+			mvvm --- vue.js
+
+mvvm
+	View 视图 DOM
+	ViewModel  通讯--观察者
+	Mode  数据 JavaScript对象
+
+	针对具有复杂交互逻辑的前端应用
+	提供基础的架构抽象
+	通过Ajax数据持久化,保证前端用户体验
+
+vue.js
+	轻量级 mvvm 框架
+	数据驱动 + 组件化前端开发
+	github、社区活跃度高
+
+核心思想
+	数据驱动
+		DOM 是数据的一种自然映射
+			数据相应原理
+				数据(model)改变驱动(view)自动更新
+	组件化
+		扩展 HTML 元素,封装可重用代码
+
+		组件化设计原则
+			页面上每一个独立的可视/可交互区域视为一个组件
+			每个组件对应一个工程目录,组件所需的各种资源在这个目录下就近维护
+			页面不过是组件的容器,组件可以嵌套自由组合形成完整的页面
+
+vue-cli是vue的脚手架工具
+
+npm i vue -g
+npm i vue-cli -g
+
+vue init webpack fileName
